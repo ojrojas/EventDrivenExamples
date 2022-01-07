@@ -1,4 +1,4 @@
-namespace Rest1.Dtos
+namespace EventDrivenDesign.Rest1.Dtos
 {
     public class UserDto
     {

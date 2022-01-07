@@ -1,88 +1,55 @@
-using Rest1.Interfaces;
-using Rest1.Models;
+using EventDrivenDesign.Rest1.Data;
+using EventDrivenDesign.Rest1.Interfaces;
+using EventDrivenDesign.Rest1.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Rest1.Respositories
+namespace EventDrivenDesign.Rest1.Respositories
 {
     public class UserRepository : IUserRepository
     {
-
-        public static List<User> UserDataList;
+        private readonly Rest1DbContext _context;
         public UserRepository()
         {
-            UserDataList = new List<User> {
-            new User {
-                Id=Guid.NewGuid(),
-                Name="Ralf",
-                LastName="Jones",
-                Email ="ralfjones@email.com",
-                OtherData="NaNaNaNaNaNana"
-            },
-            new User {
-                 Id=Guid.NewGuid(),
-                Name="Clark",
-                LastName="Still",
-                Email ="clarkstill@email.com",
-                OtherData="Hey"
-            },
-            new User {
-                 Id=Guid.NewGuid(),
-                Name="Heidern",
-                LastName="",
-                Email ="heidern@email.com",
-                OtherData="Atention!"
-            }
-        };
+            _context = new Rest1DbContext();
         }
 
         public async Task<User> CreateUser(User User, CancellationToken cancellationToken)
         {
-            await Task.Run(() => UserDataList.Add(User), cancellationToken);
-            return User;
+            await _context.Users.AddAsync(User);
+            return await SaveAsync(cancellationToken) ? User : default;
         }
 
         public async Task<bool> DeleteUser(Guid Id, CancellationToken cancellationToken)
         {
-            User user = default;
-            await Task.Run(() =>
-            {
-                user = UserDataList.FirstOrDefault(x => x.Id == Id);
-            }, cancellationToken);
-            return UserDataList.Remove(user);
+            var user = _context.Users.FirstOrDefault(x => x.Id == Id);
+            _context.Users.Remove(user);
+            return await SaveAsync(cancellationToken);
         }
 
         public async Task<User> GetUserById(Guid Id, CancellationToken cancellationToken)
         {
-            User user = default;
-            await Task.Run(() =>
-            {
-                user = UserDataList.FirstOrDefault(x => x.Id == Id);
-            }, cancellationToken);
-            return user as User;
+            return await _context.Users.FindAsync(new object[] { Id }, cancellationToken);
         }
 
         public async Task<IReadOnlyList<User>> ListUsers(CancellationToken cancellationToken)
         {
-            List<User> users = default;
-            await Task.Run(() =>
-            {
-                users = UserDataList;
-            }, cancellationToken);
-            return users;
+            return await _context.Users.ToListAsync(cancellationToken);
         }
 
-        public async Task<User> UdateUser(Guid Id, User User, CancellationToken cancellationToken)
+        public async Task<User> UpdateUser(Guid Id, User User, CancellationToken cancellationToken)
         {
-            User user = default;
-            await Task.Run(() =>
-            {
-                user = UserDataList.FirstOrDefault(x => x.Id == Id);
-                user.Name = User.Name;
-                user.LastName = User.LastName;
-                user.Email = User.Email;
-                user.OtherData = User.OtherData;
-            }, cancellationToken);
+            var user = _context.Users.FirstOrDefault(x => x.Id == Id);
+            user.Name = User.Name;
+            user.LastName = User.LastName;
+            user.Email = User.Email;
+            user.OtherData = User.OtherData;
+            _context.Update(user);
+            return await SaveAsync(cancellationToken) ? user : default;
+        }
 
-            return user;
+        private async Task<bool> SaveAsync(CancellationToken cancellationToken)
+        {
+            return await _context.SaveChangesAsync(cancellationToken) > 0;
         }
     }
 }

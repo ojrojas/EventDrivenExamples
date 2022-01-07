@@ -1,9 +1,9 @@
 using AutoMapper;
-using Rest1.Dtos;
-using Rest1.Interfaces;
-using Rest1.Models;
+using EventDrivenDesign.Rest1.Dtos;
+using EventDrivenDesign.Rest1.Interfaces;
+using EventDrivenDesign.Rest1.Models;
 
-namespace Rest1.Services
+namespace EventDrivenDesign.Rest1.Services
 {
     public class UserService : IUserService
     {
@@ -37,10 +37,10 @@ namespace Rest1.Services
             return  _mapper.Map<IReadOnlyList<UserDto>>(await _userRepository.ListUsers(cancellationToken));
         }
 
-        public async Task<UserDto> UdateUser(Guid Id, UserDto User, CancellationToken cancellationToken)
+        public async Task<UserDto> UpdateUser(Guid Id, UserDto User, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(User);
-            return  _mapper.Map<UserDto>(await _userRepository.UdateUser(Id, user, cancellationToken));
+            return  _mapper.Map<UserDto>(await _userRepository.UpdateUser(Id, user, cancellationToken));
         }
     }
 }

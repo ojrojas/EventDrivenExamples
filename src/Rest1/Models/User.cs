@@ -1,4 +1,4 @@
-namespace Rest1.Models
+namespace EventDrivenDesign.Rest1.Models
 {
     public class User
     {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Rest1.Dtos;
-using Rest1.Interfaces;
+using EventDrivenDesign.Rest1.Dtos;
+using EventDrivenDesign.Rest1.Interfaces;
 
-namespace Rest1.Controllers
+namespace EventDrivenDesign.Rest1.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

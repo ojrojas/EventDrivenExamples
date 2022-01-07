@@ -1,7 +1,7 @@
-using Rest1.Interfaces;
-using Rest1.Mappers;
-using Rest1.Respositories;
-using Rest1.Services;
+using EventDrivenDesign.Rest1.Interfaces;
+using EventDrivenDesign.Rest1.Mappers;
+using EventDrivenDesign.Rest1.Respositories;
+using EventDrivenDesign.Rest1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

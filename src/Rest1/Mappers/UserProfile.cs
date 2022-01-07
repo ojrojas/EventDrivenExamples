@@ -1,8 +1,8 @@
 using AutoMapper;
-using Rest1.Dtos;
-using Rest1.Models;
+using EventDrivenDesign.Rest1.Dtos;
+using EventDrivenDesign.Rest1.Models;
 
-namespace Rest1.Mappers
+namespace EventDrivenDesign.Rest1.Mappers
 {
     public class UserProfile : Profile
     {
