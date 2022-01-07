@@ -519,11 +519,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest2/Rest2.csproj",
+      "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
       "projectName": "Rest2",
-      "projectPath": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest2/Rest2.csproj",
+      "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
       "packagesPath": "/home/ojrojas/.nuget/packages/",
-      "outputPath": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest2/obj/",
+      "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ojrojas/.nuget/NuGet/NuGet.Config"
@@ -585,7 +585,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

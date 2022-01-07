@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest1/Rest1.csproj": {}
+    "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj": {}
   },
   "projects": {
-    "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest1/Rest1.csproj": {
+    "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest1/Rest1.csproj",
+        "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
         "projectName": "Rest1",
-        "projectPath": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest1/Rest1.csproj",
+        "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
         "packagesPath": "/home/ojrojas/.nuget/packages/",
-        "outputPath": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest1/obj/",
+        "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ojrojas/.nuget/NuGet/NuGet.Config"
@@ -77,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

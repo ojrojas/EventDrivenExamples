@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vk4Js5dnrv7PfFvh0t8ZsGKa1ZS4IsJ/jfBjTeYaT54LMAnWs0pmeHposTywyzcOtm5e1yh/tLq/JHIcNm/QKg==",
+  "dgSpecHash": "d7dFilyOn7m5PD93aceY4JeDIqovoR3T0e0Fyb4YmaAFYSedFz2wPL0TcKkjNIPb9BF/D3dXY93ZXGyBlUO0ew==",
   "success": true,
-  "projectFilePath": "/home/ojrojas/Source/GitHub/EventDrivenDesign/src/Rest2/Rest2.csproj",
+  "projectFilePath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
   "expectedPackageFiles": [
     "/home/ojrojas/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
