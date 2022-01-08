@@ -1,4 +1,6 @@
 using AutoMapper;
+using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
+using EventDrivenDesign.Rest1.Application.IntegrationEvents;
 using EventDrivenDesign.Rest1.Dtos;
 using EventDrivenDesign.Rest1.Interfaces;
 using EventDrivenDesign.Rest1.Models;
@@ -9,9 +11,11 @@ namespace EventDrivenDesign.Rest1.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly IEventBus _eventBus;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IEventBus eventBus,IUserRepository userRepository, IMapper mapper)
         {
+            _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
@@ -19,7 +23,11 @@ namespace EventDrivenDesign.Rest1.Services
         public async Task<UserDto> CreateUser(UserDto UserDto, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(UserDto);
-            return  _mapper.Map<UserDto>(await _userRepository.CreateUser(user, cancellationToken));
+            var result = _mapper.Map<UserDto>(await _userRepository.CreateUser(user, cancellationToken));
+            var userCreatedIntegrationEvent = new UserCreatedIntegrationEvent(result.Id, result.Name);
+
+            _eventBus.Publish(userCreatedIntegrationEvent);
+            return  result;
         }
 
         public async Task<bool> DeleteUser(Guid Id, CancellationToken cancellationToken)

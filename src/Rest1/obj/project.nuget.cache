@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vp6PeK2NxMD0abRpqg+lyikLXAkguNXkt0Nl3Ilykjuoh2bcFlb4XdRW6SHMzUHhcKOQfRuU2dSc3yuzjE0kjg==",
+  "dgSpecHash": "LdKxEboy//SeaoLXJZiOUKR7SFi3FOrDUj7lQe5QUN+sVfVsIJLpHHH6AMVOCHY+mFQYI6lxXb5EauSb5Lv9tg==",
   "success": true,
   "projectFilePath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
   "expectedPackageFiles": [
-    "/home/ojrojas/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
-    "/home/ojrojas/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
+    "/home/ojrojas/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
+    "/home/ojrojas/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/microsoft.entityframeworkcore/6.0.1/microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
@@ -35,7 +35,6 @@
     "/home/ojrojas/.nuget/packages/system.collections.immutable/6.0.0/system.collections.immutable.6.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/system.memory/4.5.4/system.memory.4.5.4.nupkg.sha512",
-    "/home/ojrojas/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/system.threading.channels/4.7.1/system.threading.channels.4.7.1.nupkg.sha512"
   ],

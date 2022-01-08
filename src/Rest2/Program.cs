@@ -1,3 +1,6 @@
+using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
+using EventDrivenDesign.Rest2.Application.IntegrationEvents;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +18,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+var eventBus = app.Services.GetRequiredService<EventDrivenDesign.BuildingBlocks.EventBus.Abstractions.IEventBus>();
+eventBus.Subscribe<UserCreatedIntegrationEvent, IIntegrationEventHandler<UserCreatedIntegrationEvent>>();
 
 app.UseHttpsRedirection();
 

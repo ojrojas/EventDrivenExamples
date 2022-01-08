@@ -4,14 +4,14 @@
     "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj": {}
   },
   "projects": {
-    "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj": {
+    "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
-        "projectName": "Rest1",
-        "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
+        "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj",
+        "projectName": "EventBus",
+        "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj",
         "packagesPath": "/home/ojrojas/.nuget/packages/",
-        "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/",
+        "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ojrojas/.nuget/NuGet/NuGet.Config"
@@ -37,14 +37,70 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
+        "projectName": "Rest1",
+        "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
+        "packagesPath": "/home/ojrojas/.nuget/packages/",
+        "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/ojrojas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj": {
+                "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[10.1.1, )"
+              "version": "[11.0.0, )"
             },
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[11.0.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

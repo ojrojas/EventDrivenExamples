@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+
+  restusers:
+    image: rest1
+    build:
+      context: .
+      dockerfile: Rest1/Dockerfile
+    depends_on:
+      - postgredb
+      - rabbitmq
+
+  restposts:
+    image: rest2
+    build:
+      context: .
+      dockerfile: Rest2/Dockerfile
+    depends_on:
+      - postgredb
+      - rabbitmq
+
+  postgredb:
+    image: postgres
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine

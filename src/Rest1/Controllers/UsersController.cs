@@ -22,7 +22,7 @@ namespace EventDrivenDesign.Rest1.Controllers
         [HttpPut]
         public async Task<ActionResult<UserDto>> UpdateUsers(
                     [FromRoute] Guid Id, [FromBody] UserDto UserDto, CancellationToken cancellationToken) => Ok(
-                        await _userService.UdateUser(Id, UserDto, cancellationToken));
+                        await _userService.UpdateUser(Id, UserDto, cancellationToken));
 
         [HttpPost]
         public async Task<ActionResult<UserDto>> CreateUsers(
