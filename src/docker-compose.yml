@@ -1,7 +1,8 @@
 version: '3.4'
 
 services:
-
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
   restusers:
     image: rest1
     build:
@@ -23,5 +24,4 @@ services:
   postgredb:
     image: postgres
 
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
+  

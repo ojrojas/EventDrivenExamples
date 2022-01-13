@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
+EXPOSE 5001
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
@@ -15,6 +15,7 @@ COPY "Rest2/Rest2.csproj" "Rest2/Rest2.csproj"
 COPY "Rest1Test/Rest1Test.csproj" "Rest1Test/Rest1Test.csproj"
 COPY "Rest2Test/Rest2Test.csproj" "Rest2Test/Rest2Test.csproj"
 
+RUN dotnet clean "EventDrivenDesign.sln"
 RUN dotnet restore "EventDrivenDesign.sln"
 
 COPY . .

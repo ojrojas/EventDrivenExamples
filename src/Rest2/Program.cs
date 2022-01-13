@@ -1,4 +1,5 @@
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
+using EventDrivenDesign.Rest2;
 using EventDrivenDesign.Rest2.Application.IntegrationEvents;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var Configuration = builder.Configuration;
+builder.Services.RegisterEventBus(Configuration);
 
 var app = builder.Build();
 
@@ -29,3 +32,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
