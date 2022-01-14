@@ -14,6 +14,12 @@ namespace EventDrivenDesign.BuildingBlocks.EventBus
         //Event
         public event EventHandler<string> OnEventRemoved;
 
+        public InMemoryEventBusSubscriptionsManager()
+        {
+            _handlers = new Dictionary<string, List<SubscriptionInfo>>();
+            _eventTypes = new List<Type>();
+        }
+
         public void AddSubscription<T, TH>()
             where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>
@@ -82,21 +88,21 @@ namespace EventDrivenDesign.BuildingBlocks.EventBus
             where T : IntegrationEvent
             where TH : IIntegrationEventHandler<T>
         {
-            var subscriptionsToRemove = FindSubscriptionToRemove<T,TH>();
+            var subscriptionsToRemove = FindSubscriptionToRemove<T, TH>();
             var eventName = GetEventKey<T>();
-            DoRemoveHandler(eventName:eventName,subscriptionToRemove: subscriptionsToRemove);
+            DoRemoveHandler(eventName: eventName, subscriptionToRemove: subscriptionsToRemove);
         }
 
         private void DoRemoveHandler(string eventName, SubscriptionInfo subscriptionToRemove)
         {
-            if(subscriptionToRemove != null)
+            if (subscriptionToRemove != null)
             {
                 _handlers[eventName].Remove(subscriptionToRemove);
-                if(!_handlers[eventName].Any())
+                if (!_handlers[eventName].Any())
                 {
                     _handlers.Remove(eventName);
                     var eventType = _eventTypes.SingleOrDefault(e => e.Name == eventName);
-                    if(eventType != null)
+                    if (eventType != null)
                     {
                         _eventTypes.Remove(eventType);
                     }
@@ -117,10 +123,10 @@ namespace EventDrivenDesign.BuildingBlocks.EventBus
         {
             var eventName = GetEventKey<T>();
             var handlerType = typeof(TH);
-            if(!HasSubscriptionsForEvent(eventName))
-             return null;
+            if (!HasSubscriptionsForEvent(eventName))
+                return null;
             return _handlers[eventName].SingleOrDefault(h => h.HandlerType == handlerType);
-            
+
         }
     }
 }

@@ -1,3 +1,4 @@
+using EventDrivenDesign.Rest1;
 using EventDrivenDesign.Rest1.Interfaces;
 using EventDrivenDesign.Rest1.Mappers;
 using EventDrivenDesign.Rest1.Respositories;
@@ -11,9 +12,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo{ Title ="Rest1 User Api", Version = "v1"});
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo{ Title ="Rest1 Users Api", Version = "v1"});
 });
 builder.Services.AddAutoMapper(typeof(UserProfile));
+var Configuration = builder.Configuration;
+builder.Services.RegisterEventBus(Configuration);
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 

@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/EventDrivenDesign.sln",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        // {
+        //     "label": "publish",
+        //     "command": "dotnet",
+        //     "type": "process",
+        //     "args": [
+        //         "publish",
+        //         "${workspaceFolder}/src/Rest1/Rest1.csproj",
+        //         "/property:GenerateFullPaths=true",
+        //         "/consoleloggerparameters:NoSummary"
+        //     ],
+        //     "problemMatcher": "$msCompile"
+        // },
+        // {
+        //     "label": "watch",
+        //     "command": "dotnet",
+        //     "type": "process",
+        //     "args": [
+        //         "watch",
+        //         "run",
+        //         "${workspaceFolder}/src/Rest1/Rest1.csproj",
+        //         "/property:GenerateFullPaths=true",
+        //         "/consoleloggerparameters:NoSummary"
+        //     ],
+        //     "problemMatcher": "$msCompile"
+        // }
+    ]
+}

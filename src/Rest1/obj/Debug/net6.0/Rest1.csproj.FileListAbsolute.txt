@@ -22,7 +22,9 @@
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/EventBus.dll
+/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/EventBusRabbitMQ.dll
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/EventBus.pdb
+/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/bin/Debug/net6.0/EventBusRabbitMQ.pdb
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/Debug/net6.0/Rest1.csproj.AssemblyReference.cache
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/Debug/net6.0/Rest1.GeneratedMSBuildEditorConfig.editorconfig
 /run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/Debug/net6.0/Rest1.AssemblyInfoInputs.cache

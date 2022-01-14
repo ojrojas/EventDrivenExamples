@@ -1,6 +1,9 @@
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.Rest2;
 using EventDrivenDesign.Rest2.Application.IntegrationEvents;
+using EventDrivenDesign.Rest2.Interfaces;
+using EventDrivenDesign.Rest2.Repositories;
+using EventDrivenDesign.Rest2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +12,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Rest2 Posts Api", Version = "v1" });
+});
 var Configuration = builder.Configuration;
 builder.Services.RegisterEventBus(Configuration);
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IPostService, PostService>();
+
+
 
 var app = builder.Build();
 

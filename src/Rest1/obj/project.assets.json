@@ -423,6 +423,21 @@
         "runtime": {
           "bin/placeholder/EventBus.dll": {}
         }
+      },
+      "EventBusRabbitMQ/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "EventBus": "1.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "RabbitMQ.Client": "6.2.2"
+        },
+        "compile": {
+          "bin/placeholder/EventBusRabbitMQ.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EventBusRabbitMQ.dll": {}
+        }
       }
     }
   },
@@ -1170,6 +1185,11 @@
       "type": "project",
       "path": "../BuildingBlocks/EventBus/EventBus.csproj",
       "msbuildProject": "../BuildingBlocks/EventBus/EventBus.csproj"
+    },
+    "EventBusRabbitMQ/1.0.0": {
+      "type": "project",
+      "path": "../BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj",
+      "msbuildProject": "../BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1177,6 +1197,7 @@
       "AutoMapper >= 11.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 11.0.0",
       "EventBus >= 1.0.0",
+      "EventBusRabbitMQ >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.1",
       "Newtonsoft.Json >= 13.0.1",
@@ -1212,6 +1233,9 @@
           "projectReferences": {
             "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj": {
               "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj"
+            },
+            "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj": {
+              "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj"
             }
           }
         }

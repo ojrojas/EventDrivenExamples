@@ -2,10 +2,9 @@ using EventDrivenDesign.BuildingBlocks.EventBus;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
 using EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ;
-using Newtonsoft.Json;
 using RabbitMQ.Client;
 
-namespace EventDrivenDesign.Rest2
+namespace EventDrivenDesign.Rest1
 {
     internal static class RegisterEventBusDependencies
     {
@@ -43,7 +42,7 @@ namespace EventDrivenDesign.Rest2
 
             services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
             {
-                var queueName = configuration["QueueName"] ?? "eventqueue";
+                var queueName = configuration["queueName"] ?? "eventqueue";
                 var persistentConnection = sp.GetRequiredService<IRabbitMQPersitentConnection>();
                 var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
                 var eventSubscriptionManager = sp.GetRequiredService<IEventBusSubcriptionsManager>();
@@ -52,6 +51,7 @@ namespace EventDrivenDesign.Rest2
             });
 
             services.AddSingleton<IEventBusSubcriptionsManager, InMemoryEventBusSubscriptionsManager>();
+
 
             return services;
         }

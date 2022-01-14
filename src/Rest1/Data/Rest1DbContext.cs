@@ -8,6 +8,6 @@ namespace EventDrivenDesign.Rest1.Data
         public DbSet<User> Users { get; set; }
 
          protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=localhost;Database=userDb;Username=root;Password=userPass");
+            => optionsBuilder.UseNpgsql("Host=localhost;Database=userDb;Username=postgres;Password=userPass");
     }
 }

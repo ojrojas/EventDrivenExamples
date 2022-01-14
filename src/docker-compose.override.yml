@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+# Define confituration services 
+  rabbitmq:
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  restusers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=:rabbitmq
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - QueueName=eventqueue
+    ports:
+      - 5102:80
+      
+  restposts:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=:rabbitmq
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - QueueName=eventqueue
+    ports:
+      - 5104:80
+
+  postgredb:
+    environment:
+      POSTGRES_PASSWORD: userPass
+    ports:
+      - 5432:5432
