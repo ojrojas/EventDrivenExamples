@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qC8BBotpXm6khU+StTbiWAXeaz1Olww0X0YdpL3x5ANBzT4NV4Af52Lais7DLD2CCfrl+WyshE7aIiYg8BBbJA==",
+  "dgSpecHash": "SI+nhABiBzXoLrq2lnkG9vsYPk7/NllWTQM1YJcooXcEDe0ndS8+wQaj7seP6nzFa4jQemSbsHo0KCgSuoy5fA==",
   "success": true,
-  "projectFilePath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
+  "projectFilePath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
   "expectedPackageFiles": [
     "/home/ojrojas/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

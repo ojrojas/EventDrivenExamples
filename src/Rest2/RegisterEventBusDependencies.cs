@@ -17,10 +17,12 @@ namespace EventDrivenDesign.Rest2
                 var logger = sp.GetRequiredService<ILogger<DefaultRabbitPersistentConnection>>();
                 var hostName = string.Empty;
 
-                if (string.IsNullOrEmpty(configuration["EventBusConnection"]))
+                if (!string.IsNullOrEmpty(configuration["EventBusConnection"]))
                 {
-                    hostName = configuration["EventBusUserName"] ?? "localhost";
+                    hostName = configuration["EventBusConnection"] ?? "localhost";
                 }
+
+                logger.LogInformation($"hostName ------------:: {hostName}");
 
                 var factory = new ConnectionFactory()
                 {

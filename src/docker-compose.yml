@@ -3,7 +3,6 @@ version: '3.4'
 services:
 # Before initializing the Rest1 and Rest2 projects, the RabbitMQ server must exist in order to make the connection.
   rabbitmq:
-    container_name: rabbitmq
     image: rabbitmq:3-management
   restusers:
     image: rest1
@@ -24,6 +23,7 @@ services:
       - rabbitmq
 
   postgredb:
+    
     image: postgres
 
   

@@ -1212,11 +1212,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
+      "projectUniqueName": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
       "projectName": "Rest1",
-      "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
+      "projectPath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/Rest1/Rest1.csproj",
       "packagesPath": "/home/ojrojas/.nuget/packages/",
-      "outputPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/Rest1/obj/",
+      "outputPath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/Rest1/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/ojrojas/.nuget/NuGet/NuGet.Config"
@@ -1231,11 +1231,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj": {
-              "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj"
+            "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj": {
+              "projectPath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBus/EventBus.csproj"
             },
-            "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj": {
-              "projectPath": "/run/media/ojrojas/Data/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj"
+            "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj": {
+              "projectPath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/BuildingBlocks/EventBusRabbitMQ/EventBusRabbitMQ.csproj"
             }
           }
         }
