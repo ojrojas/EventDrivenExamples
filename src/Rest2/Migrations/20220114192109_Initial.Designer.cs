@@ -9,11 +9,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Rest2.Data.Migrations
+namespace Rest2.Migrations
 {
     [DbContext(typeof(Rest2DbContext))]
-    [Migration("20220107153827_initial")]
-    partial class initial
+    [Migration("20220114192109_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

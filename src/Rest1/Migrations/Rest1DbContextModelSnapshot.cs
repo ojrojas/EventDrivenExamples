@@ -3,19 +3,17 @@ using System;
 using EventDrivenDesign.Rest1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Rest1.Data.Migrations
+namespace Rest1.Migrations
 {
     [DbContext(typeof(Rest1DbContext))]
-    [Migration("20220107054528_inital")]
-    partial class inital
+    partial class Rest1DbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

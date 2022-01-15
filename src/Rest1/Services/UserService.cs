@@ -12,19 +12,23 @@ namespace EventDrivenDesign.Rest1.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly IEventBus _eventBus;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(IEventBus eventBus,IUserRepository userRepository, IMapper mapper)
+        public UserService(IEventBus eventBus,IUserRepository userRepository, IMapper mapper, ILogger<UserService> logger)
         {
             _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public async Task<UserDto> CreateUser(UserDto UserDto, CancellationToken cancellationToken)
         {
             var user = _mapper.Map<User>(UserDto);
+            _logger.LogInformation("creating user into api rest1");
             var result = _mapper.Map<UserDto>(await _userRepository.CreateUser(user, cancellationToken));
             var userCreatedIntegrationEvent = new UserCreatedIntegrationEvent(result.Id, result.Name);
+            _logger.LogInformation("sending queue info user created");
 
             _eventBus.Publish(userCreatedIntegrationEvent);
             return  result;

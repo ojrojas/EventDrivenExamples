@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Rest2.Data.Migrations
+namespace Rest2.Migrations
 {
     [DbContext(typeof(Rest2DbContext))]
     partial class Rest2DbContextModelSnapshot : ModelSnapshot

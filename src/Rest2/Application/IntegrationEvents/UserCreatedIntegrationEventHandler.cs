@@ -11,10 +11,11 @@ namespace EventDrivenDesign.Rest2.Application.IntegrationEvents
             _logger = logger;
         }
 
-        public Task Handle(UserCreatedIntegrationEvent integrationEvent)
+        public async Task Handle(UserCreatedIntegrationEvent integrationEvent)
         {
             _logger.LogTrace("Executing event created user integration");
-            throw new NotImplementedException();
+            _logger.LogInformation("------------------------------------------------- Execute Method!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            await Task.CompletedTask;
         }
     }
 }

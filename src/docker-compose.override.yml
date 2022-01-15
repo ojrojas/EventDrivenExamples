@@ -7,6 +7,8 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+    networks:
+      - eventdrivendesign
 
   restusers:
     container_name: rest1
@@ -17,12 +19,16 @@ services:
       - EventBusUserName=guest
       - EventBusPassword=guest
       - QueueName=eventqueue
+      - HostDB=postgres
     ports:
       - 5102:80
       - 5103:443
+    networks:
+      - eventdrivendesign
       
   restposts:
     container_name: rest2
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       # - ASPNETCORE_URLS=http://0.0.0.0:80
@@ -30,9 +36,12 @@ services:
       - EventBusUserName=guest
       - EventBusPassword=guest
       - QueueName=eventqueue
+      - HostDB=postgres
     ports:
       - 5104:80
       - 5105:443
+    networks:
+      - eventdrivendesign
 
   postgredb:
     container_name: postgres
@@ -40,3 +49,15 @@ services:
       POSTGRES_PASSWORD: userPass
     ports:
       - 5432:5432
+    networks:
+      - eventdrivendesign
+    volumes:
+      - eventdrivendesign-sqldata:/var/lib/postgresql/data \
+
+networks:
+  eventdrivendesign:
+    driver: bridge
+
+volumes:
+  eventdrivendesign-sqldata:
+    external: false

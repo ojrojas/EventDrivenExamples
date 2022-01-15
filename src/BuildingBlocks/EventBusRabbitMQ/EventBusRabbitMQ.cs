@@ -1,5 +1,8 @@
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.RegularExpressions;
+using System.Text.Unicode;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.BuildingBlocks.EventBus.Events;
 using EventDrivenDesign.BuildingBlocks.EventBus.Extensions;
@@ -83,6 +86,11 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
         {
             var eventName = eventArgs.RoutingKey;
             var message = Encoding.UTF8.GetString(eventArgs.Body.Span);
+            _logger.LogInformation($"Content {message}");
+
+            // fix 
+           message = message.Replace("\u0022","\"");
+           message = message.Replace("\n","");
 
             try
             {
@@ -98,9 +106,6 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
                 _logger.LogWarning(ex, "----- ERROR Processing message \"{Message}\"", message);
             }
 
-            // Even on exception we take the message off the queue.
-            // in a REAL WORLD app this should be handled with a Dead Letter Exchange (DLX). 
-            // For more information see: https://www.rabbitmq.com/dlx.html
             _consumerChannel.BasicAck(eventArgs.DeliveryTag, multiple: false);
         }
 
@@ -116,10 +121,19 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
                     var handler = subscription.HandlerType;
                     if (handler == null) continue;
                     var eventType = _eventSubscriptionManager.GetEventTypeByName(eventName);
-                    var integrationEvent = JsonSerializer.Deserialize(message, eventType, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-                    var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
+                    _logger.LogInformation($"EventType ::::::::::::::::::::    {eventType}");
+                    var integrationEvent = JsonSerializer.Deserialize(message, eventType, new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true,
+                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic)
+                    });
+                    _logger.LogInformation($"IntegrationEvent ::::::::::::::::::::    {integrationEvent}");
+
+                    var concreteType = typeof(IIntegrationEventHandler).MakeGenericType(eventType);
 
                     await Task.Yield();
+                    _logger.LogInformation($"ConcreteType ::::::::::::::::::::    {concreteType}");
+
                     await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
                 }
             }
@@ -157,7 +171,8 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
 
                 var body = JsonSerializer.SerializeToUtf8Bytes(integrationEvent, integrationEvent.GetType(), new JsonSerializerOptions
                 {
-                    WriteIndented = true
+                    WriteIndented = true,
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
                 });
 
 

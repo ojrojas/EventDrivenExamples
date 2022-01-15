@@ -3,7 +3,7 @@ version: '3.4'
 services:
 # Before initializing the Rest1 and Rest2 projects, the RabbitMQ server must exist in order to make the connection.
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:3-management-alpine
   restusers:
     image: rest1
     build:

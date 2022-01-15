@@ -430,6 +430,7 @@
         "dependencies": {
           "EventBus": "1.0.0",
           "Microsoft.Extensions.Logging": "6.0.0",
+          "Newtonsoft.Json": "13.0.1",
           "RabbitMQ.Client": "6.2.2"
         },
         "compile": {
