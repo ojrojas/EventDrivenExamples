@@ -8,7 +8,7 @@ namespace EventDrivenDesign.BuildingBlocks.EventBus
         {
             public Type HandlerType { get; }
 
-            public SubscriptionInfo(Type handlerType)
+            private SubscriptionInfo(Type handlerType)
             {
                 this.HandlerType = handlerType;
             }

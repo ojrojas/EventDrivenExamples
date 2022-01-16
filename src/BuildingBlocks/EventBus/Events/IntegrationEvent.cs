@@ -2,15 +2,15 @@ using System.Text.Json.Serialization;
 
 namespace EventDrivenDesign.BuildingBlocks.EventBus.Events
 {
-    public class IntegrationEvent
+    public record IntegrationEvent
     {
-        [JsonConstructor]
         public IntegrationEvent()
         {
             Id = Guid.NewGuid();
             Created = DateTime.UtcNow;
         }
 
+        [JsonConstructor]
         public IntegrationEvent(Guid id, DateTime created)
         {
             Id = id;
@@ -18,8 +18,8 @@ namespace EventDrivenDesign.BuildingBlocks.EventBus.Events
         }
 
         [JsonInclude]
-        public Guid Id { get; private set; }
+        public Guid Id { get;  private init; }
         [JsonInclude]
-        public DateTime Created { get; private set; }
+        public DateTime Created { get; private init; }
     }
 }

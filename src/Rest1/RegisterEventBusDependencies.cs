@@ -1,3 +1,4 @@
+using Autofac;
 using EventDrivenDesign.BuildingBlocks.EventBus;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
@@ -45,9 +46,10 @@ namespace EventDrivenDesign.Rest1
                 var queueName = configuration["queueName"] ?? "eventqueue";
                 var persistentConnection = sp.GetRequiredService<IRabbitMQPersitentConnection>();
                 var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
                 var eventSubscriptionManager = sp.GetRequiredService<IEventBusSubcriptionsManager>();
 
-                return new EventBusRabbitMQ(queueName, persistentConnection, logger, eventSubscriptionManager);
+                return new EventBusRabbitMQ(queueName, persistentConnection, logger,iLifetimeScope, eventSubscriptionManager);
             });
 
             services.AddSingleton<IEventBusSubcriptionsManager, InMemoryEventBusSubscriptionsManager>();

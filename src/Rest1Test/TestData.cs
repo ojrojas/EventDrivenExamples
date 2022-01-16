@@ -6,7 +6,7 @@ namespace EventDrivenDesign.Rest1Test
 {
     public class DataUsersSeed
     {
-        public static List<User> UserDataList;
+        public List<User> UserDataList;
         public DataUsersSeed()
         {
             UserDataList = new List<User> {

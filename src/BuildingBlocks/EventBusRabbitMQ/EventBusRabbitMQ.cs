@@ -3,6 +3,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Text.Unicode;
+using Autofac;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.BuildingBlocks.EventBus.Events;
 using EventDrivenDesign.BuildingBlocks.EventBus.Extensions;
@@ -20,16 +21,20 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
         private readonly IRabbitMQPersitentConnection _persistentConnection;
         private ILogger<EventBusRabbitMQ> _logger;
         private readonly IEventBusSubcriptionsManager _eventSubscriptionManager;
+        private readonly ILifetimeScope _autofac;
+
         private IModel _consumerChannel;
 
         public EventBusRabbitMQ(string queueName,
                                 IRabbitMQPersitentConnection persistentConnection,
                                 ILogger<EventBusRabbitMQ> logger,
+                                ILifetimeScope autofac,
                                 IEventBusSubcriptionsManager eventSubscriptionManager)
         {
             _queueName = queueName;
             _persistentConnection = persistentConnection ?? throw new ArgumentNullException(nameof(persistentConnection));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _autofac = autofac ?? throw new ArgumentNullException(nameof(autofac));
             _eventSubscriptionManager = eventSubscriptionManager ?? throw new ArgumentNullException(nameof(eventSubscriptionManager));
             _consumerChannel = CreateConsumerChannel();
         }
@@ -89,8 +94,8 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
             _logger.LogInformation($"Content {message}");
 
             // fix 
-           message = message.Replace("\u0022","\"");
-           message = message.Replace("\n","");
+            message = message.Replace("\u0022", "\"");
+            message = message.Replace("\n", "");
 
             try
             {
@@ -115,26 +120,24 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
 
             if (_eventSubscriptionManager.HasSubscriptionsForEvent(eventName))
             {
-                var subscriptions = _eventSubscriptionManager.GetHandlersForEvent(eventName);
-                foreach (var subscription in subscriptions)
+                using (var scope = _autofac.BeginLifetimeScope(BROKER_NAME))
                 {
-                    var handler = subscription.HandlerType;
-                    if (handler == null) continue;
-                    var eventType = _eventSubscriptionManager.GetEventTypeByName(eventName);
-                    _logger.LogInformation($"EventType ::::::::::::::::::::    {eventType}");
-                    var integrationEvent = JsonSerializer.Deserialize(message, eventType, new JsonSerializerOptions
+                    var subscriptions = _eventSubscriptionManager.GetHandlersForEvent(eventName);
+                    foreach (var subscription in subscriptions)
                     {
-                        PropertyNameCaseInsensitive = true,
-                        Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic)
-                    });
-                    _logger.LogInformation($"IntegrationEvent ::::::::::::::::::::    {integrationEvent}");
+                        var handler = scope.ResolveOptional(subscription.HandlerType);
+                        if (handler == null) continue;
+                        var eventType = _eventSubscriptionManager.GetEventTypeByName(eventName);
+                        var integrationEvent = JsonSerializer.Deserialize(message, eventType, new JsonSerializerOptions
+                        {
+                            PropertyNameCaseInsensitive = true
+                        });
 
-                    var concreteType = typeof(IIntegrationEventHandler).MakeGenericType(eventType);
+                        var concreteType = typeof(IIntegrationEventHandler<>).MakeGenericType(eventType);
 
-                    await Task.Yield();
-                    _logger.LogInformation($"ConcreteType ::::::::::::::::::::    {concreteType}");
-
-                    await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
+                        await Task.Yield();
+                        await (Task)concreteType.GetMethod("Handle").Invoke(handler, new object[] { integrationEvent });
+                    }
                 }
             }
             else

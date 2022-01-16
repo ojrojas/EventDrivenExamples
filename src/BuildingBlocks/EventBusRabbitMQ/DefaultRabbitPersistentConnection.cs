@@ -49,21 +49,21 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
             }
         }
 
-        private void OnConnectionBlocked(object? sender, ConnectionBlockedEventArgs e)
+        private void OnConnectionBlocked(object sender, ConnectionBlockedEventArgs e)
         {
             if (_dispose) return;
             _logger.LogWarning("RabbitMQ connection is blocked!, trying to re-connect... ");
             TryConnect();
         }
 
-        private void OnCallBackException(object? sender, CallbackExceptionEventArgs e)
+        private void OnCallBackException(object sender, CallbackExceptionEventArgs e)
         {
             if (_dispose) return;
             _logger.LogWarning("RabbitMQ connection is exception!, trying to re-connect... ");
             TryConnect();
         }
 
-        private void OnConnectionShutDown(object? sender, ShutdownEventArgs e)
+        private void OnConnectionShutDown(object sender, ShutdownEventArgs e)
         {
             if (_dispose) return;
             _logger.LogWarning("RabbitMQ connection is shutdown, trying to re-connect... ");

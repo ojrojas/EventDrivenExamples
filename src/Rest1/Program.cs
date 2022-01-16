@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using EventDrivenDesign.Rest1;
 using EventDrivenDesign.Rest1.Interfaces;
 using EventDrivenDesign.Rest1.Mappers;
@@ -19,6 +21,12 @@ var Configuration = builder.Configuration;
 builder.Services.RegisterEventBus(Configuration);
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+// Register services directly with Autofac here. Don't
+// call builder.Populate(), that happens in AutofacServiceProviderFactory.
+// builder.Host.ConfigureContainer<ContainerBuilder>(builderOptions => builderOptions.Populate(builder.Services));
 
 
 var app = builder.Build();

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QA61TdXyTQy2bWJpvT52kz21reSDrjoS2N9p07OgW8orlkAIcOJao5aaIOqdJv8vRpZ6ADsZCWz7NLo/7n1P6g==",
+  "dgSpecHash": "Q4mENaUodhqeD0do2hVAn+S0Iltfx1jAnXb7nLNrgNZqUhQzOj51oGMkd8t7kr0sCZtz2D7YNOBquXAzPoW4HQ==",
   "success": true,
-  "projectFilePath": "/home/ojrojas/Sources/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
+  "projectFilePath": "/home/ojrojas/Source/GitHub/EventDrivenExamples/src/Rest2/Rest2.csproj",
   "expectedPackageFiles": [
+    "/home/ojrojas/.nuget/packages/autofac/6.3.0/autofac.6.3.0.nupkg.sha512",
+    "/home/ojrojas/.nuget/packages/autofac.extensions.dependencyinjection/7.2.0/autofac.extensions.dependencyinjection.7.2.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/automapper/11.0.0/automapper.11.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/11.0.0/automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "/home/ojrojas/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

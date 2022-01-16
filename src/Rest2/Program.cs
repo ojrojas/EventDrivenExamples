@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
 using EventDrivenDesign.Rest2;
 using EventDrivenDesign.Rest2.Application.IntegrationEvents;
@@ -20,9 +22,16 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddAutoMapper(typeof(PostProfile));
 var Configuration = builder.Configuration;
 builder.Services.RegisterEventBus(Configuration);
+builder.Services.AddTransient<UserCreatedIntegrationEventHandler>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddTransient<UserCreatedIntegrationEventHandler>();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+// Register services directly with Autofac here. Don't
+// call builder.Populate(), that happens in AutofacServiceProviderFactory.
+// builder.Host.ConfigureContainer<ContainerBuilder>(builderOptions => builderOptions.Populate(builder.Services));
 
 var app = builder.Build();
 
@@ -34,7 +43,7 @@ if (app.Environment.IsDevelopment())
 }
 
 var eventBus = app.Services.GetRequiredService<EventDrivenDesign.BuildingBlocks.EventBus.Abstractions.IEventBus>();
-eventBus.Subscribe<UserCreatedIntegrationEvent, IIntegrationEventHandler<UserCreatedIntegrationEvent>>();
+eventBus.Subscribe<UserCreatedIntegrationEvent, UserCreatedIntegrationEventHandler>();
 
 app.UseHttpsRedirection();
 
