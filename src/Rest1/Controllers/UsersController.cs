@@ -19,7 +19,7 @@ namespace EventDrivenDesign.Rest1.Controllers
         public async Task<ActionResult<List<UserDto>>> GetUsers(
             CancellationToken cancellationToken) => Ok(await _userService.ListUsers(cancellationToken));
 
-        [HttpPut]
+        [HttpPut("{Id}")]
         public async Task<ActionResult<UserDto>> UpdateUsers(
                     [FromRoute] Guid Id, [FromBody] UserDto UserDto, CancellationToken cancellationToken) => Ok(
                         await _userService.UpdateUser(Id, UserDto, cancellationToken));
@@ -34,7 +34,7 @@ namespace EventDrivenDesign.Rest1.Controllers
             [FromRoute] Guid Id, CancellationToken cancellationToken) => Ok(
                 await _userService.GetUserById(Id, cancellationToken));
 
-        [HttpDelete]
+        [HttpDelete("{Id}")]
         public async Task<ActionResult<UserDto>> DeleteUsers(
             [FromRoute] Guid Id, CancellationToken cancellationToken) => Ok(
                 await _userService.DeleteUser(Id, cancellationToken));

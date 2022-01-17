@@ -9,6 +9,7 @@ namespace EventDrivenDesign.Rest2.Mappers
         public PostProfile()
         {
             CreateMap<Post, PostDto>().ReverseMap();
+             CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

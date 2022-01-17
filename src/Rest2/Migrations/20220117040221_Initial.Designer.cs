@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Rest2.Migrations
 {
     [DbContext(typeof(Rest2DbContext))]
-    [Migration("20220114192109_Initial")]
+    [Migration("20220117040221_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,11 +31,9 @@ namespace Rest2.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid>("UserId")
@@ -55,12 +53,11 @@ namespace Rest2.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("EventDrivenDesign.Rest2.Models.Post", b =>

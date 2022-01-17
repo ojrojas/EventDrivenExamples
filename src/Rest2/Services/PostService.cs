@@ -1,3 +1,4 @@
+using System.Text.Json;
 using AutoMapper;
 using EventDrivenDesign.Rest2.Dtos;
 using EventDrivenDesign.Rest2.Interfaces;
@@ -30,23 +31,28 @@ namespace EventDrivenDesign.Rest2.Services
 
         public async Task<bool> DeletePost(Guid Id, CancellationToken cancellationToken)
         {
+            _logger.LogInformation($"Delete post request Id: {Id}");
             return await _postRepository.DeletePost(Id, cancellationToken);
         }
 
         public async Task<IReadOnlyList<PostDto>> GetAllPost(CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Get all post request");
             return _mapper.Map<IReadOnlyList<PostDto>>(await _postRepository.GetAllPost(cancellationToken));
         }
 
         public async Task<PostDto> GetByIdPost(Guid Id, CancellationToken cancellationToken)
         {
-           return  _mapper.Map<PostDto>(await _postRepository.GetByIdPost(Id, cancellationToken));
+            _logger.LogInformation($"Get post request Id: {Id}");
+            return _mapper.Map<PostDto>(await _postRepository.GetByIdPost(Id, cancellationToken));
         }
 
         public async Task<PostDto> UpdatePost(Guid Id, PostDto postDto, CancellationToken cancellationToken)
         {
-              var post = _mapper.Map<Post>(postDto);
-            return  _mapper.Map<PostDto>(await _postRepository.UpdatePost(Id, post, cancellationToken));
+            _logger.LogWarning("Mapping post to concrete post");
+            var post = _mapper.Map<Post>(postDto);
+            _logger.LogInformation($"Updating post to request new parameters {JsonSerializer.Serialize(post)}");
+            return _mapper.Map<PostDto>(await _postRepository.UpdatePost(Id, post, cancellationToken));
         }
     }
 }

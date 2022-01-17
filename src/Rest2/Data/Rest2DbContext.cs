@@ -6,6 +6,8 @@ namespace EventDrivenDesign.Rest2.Data
     public class Rest2DbContext : DbContext
     {
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var configuration = Environment.GetEnvironmentVariables();
