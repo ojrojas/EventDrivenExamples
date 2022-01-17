@@ -10,38 +10,38 @@ services:
     networks:
       - eventdrivendesign
 
-  # restusers:
-  #   container_name: rest1
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     # - ASPNETCORE_URLS=http://0.0.0.0:80
-  #     - EventBusConnection=rabbitmq
-  #     - EventBusUserName=guest
-  #     - EventBusPassword=guest
-  #     - QueueName=eventqueue
-  #     - HostDB=postgres
-  #   ports:
-  #     - 5102:80
-  #     - 5103:443
-  #   networks:
-  #     - eventdrivendesign
+  restusers:
+    container_name: rest1
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=rabbitmq
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - QueueName=eventqueue
+      - HostDB=postgres
+    ports:
+      - 5102:80
+      - 5103:443
+    networks:
+      - eventdrivendesign
       
-  # restposts:
-  #   container_name: rest2
-  #   restart: always
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     # - ASPNETCORE_URLS=http://0.0.0.0:80
-  #     - EventBusConnection=rabbitmq
-  #     - EventBusUserName=guest
-  #     - EventBusPassword=guest
-  #     - QueueName=eventqueue
-  #     - HostDB=postgres
-  #   ports:
-  #     - 5104:80
-  #     - 5105:443
-  #   networks:
-  #     - eventdrivendesign
+  restposts:
+    container_name: rest2
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # - ASPNETCORE_URLS=http://0.0.0.0:80
+      - EventBusConnection=rabbitmq
+      - EventBusUserName=guest
+      - EventBusPassword=guest
+      - QueueName=eventqueue
+      - HostDB=postgres
+    ports:
+      - 5104:80
+      - 5105:443
+    networks:
+      - eventdrivendesign
 
   postgredb:
     container_name: postgres
