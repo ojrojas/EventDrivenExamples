@@ -5,7 +5,6 @@ using EventDrivenDesign.Rest2.Models;
 
 namespace EventDrivenDesign.Rest2.Services
 {
-   
     public class UserService : IUserService
     {
         private readonly ILogger<UserService> _logger;

@@ -1,7 +1,6 @@
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Text.Unicode;
 using Autofac;
 using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
@@ -25,6 +24,7 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
 
         private IModel _consumerChannel;
 
+    
         public EventBusRabbitMQ(string queueName,
                                 IRabbitMQPersitentConnection persistentConnection,
                                 ILogger<EventBusRabbitMQ> logger,
@@ -37,6 +37,7 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
             _autofac = autofac ?? throw new ArgumentNullException(nameof(autofac));
             _eventSubscriptionManager = eventSubscriptionManager ?? throw new ArgumentNullException(nameof(eventSubscriptionManager));
             _consumerChannel = CreateConsumerChannel();
+            _eventSubscriptionManager.OnEventRemoved += EventSubscriptionManager_OnEventRemove;
         }
 
         private IModel CreateConsumerChannel()
@@ -230,6 +231,27 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
             _logger.LogInformation("Unsubscribing from event {EventName}", eventName);
 
             _eventSubscriptionManager.RemoveSubscription<T, TH>();
+        }
+
+
+        public void EventSubscriptionManager_OnEventRemove(object sender, string eventName)
+        {
+            if(!_persistentConnection.IsConnected)
+            {
+                _persistentConnection.TryConnect();
+            }
+
+            using var channel = _persistentConnection.CreateModel();
+            channel.QueueBind(
+                queue: _queueName,
+                exchange:BROKER_NAME,
+                routingKey:eventName);
+            
+            if(_eventSubscriptionManager.IsEmpty)
+            {
+                _queueName = string.Empty;
+                _consumerChannel.Close();
+            }
         }
     }
 }
