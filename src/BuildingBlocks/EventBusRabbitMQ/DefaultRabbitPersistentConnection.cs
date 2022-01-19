@@ -72,23 +72,26 @@ namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
 
         public bool TryConnect()
         {
-            _logger.LogInformation("RabbitMQ Client is trying to connect");
+            lock (sync_root)
+            {
+                _logger.LogInformation("RabbitMQ Client is trying to connect");
 
-            if (_connection == null)
-            {
-                _connection = _connectionFactory.CreateConnection();
-            }
+                if (_connection == null)
+                {
+                    _connection = _connectionFactory.CreateConnection();
+                }
 
-            if (IsConnected)
-            {
-                _connection.ConnectionShutdown += OnConnectionShutDown;
-                _connection.CallbackException += OnCallBackException;
-                _connection.ConnectionBlocked += OnConnectionBlocked;
-                return true;
-            }
-            else
-            {
-                return false;
+                if (IsConnected)
+                {
+                    _connection.ConnectionShutdown += OnConnectionShutDown;
+                    _connection.CallbackException += OnCallBackException;
+                    _connection.ConnectionBlocked += OnConnectionBlocked;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }
