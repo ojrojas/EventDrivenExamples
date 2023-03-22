@@ -1,5 +1,3 @@
-using EventDrivenDesign.BuildingBlocks.EventBus.Events;
-
 namespace EventDrivenDesign.BuildingBlocks.EventBus.Abstractions
 {
     public interface IEventBus

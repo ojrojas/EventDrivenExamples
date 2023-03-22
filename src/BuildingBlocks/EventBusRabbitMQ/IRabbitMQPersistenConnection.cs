@@ -1,5 +1,3 @@
-using RabbitMQ.Client;
-
 namespace EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ
 {
     public interface IRabbitMQPersitentConnection : IDisposable

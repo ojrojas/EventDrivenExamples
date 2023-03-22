@@ -1,7 +1,3 @@
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.BuildingBlocks.EventBus.Events;
-using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
-
 namespace EventDrivenDesign.BuildingBlocks.EventBus
 {
     public partial class InMemoryEventBusSubscriptionsManager : IEventBusSubcriptionsManager
