@@ -1,5 +1,3 @@
-using EventDrivenDesign.BuildingBlocks.EventBus.Events;
-
 namespace EventDrivenDesign.Rest2.Application.IntegrationEvents
 {
     public record UserCreatedIntegrationEvent : IntegrationEvent

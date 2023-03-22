@@ -1,7 +1,3 @@
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.Rest2.Queries.Commands;
-using MediatR;
-
 namespace EventDrivenDesign.Rest2.Application.IntegrationEvents
 {
     public class UserCreatedIntegrationEventHandler : IIntegrationEventHandler<UserCreatedIntegrationEvent>

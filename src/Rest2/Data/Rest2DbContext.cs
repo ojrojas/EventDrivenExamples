@@ -1,10 +1,9 @@
-using EventDrivenDesign.Rest2.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace EventDrivenDesign.Rest2.Data
 {
     public class Rest2DbContext : DbContext
     {
+        public Rest2DbContext() { }
+
         public DbSet<Post> Posts { get; set; }
         public DbSet<User> Users { get; set; }
 

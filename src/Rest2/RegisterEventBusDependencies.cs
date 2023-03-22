@@ -1,12 +1,3 @@
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using EventDrivenDesign.BuildingBlocks.EventBus;
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
-using EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ;
-using Newtonsoft.Json;
-using RabbitMQ.Client;
-
 namespace EventDrivenDesign.Rest2
 {
     internal static class RegisterEventBusDependencies

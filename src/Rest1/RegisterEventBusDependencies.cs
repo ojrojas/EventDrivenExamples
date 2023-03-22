@@ -1,10 +1,3 @@
-using Autofac;
-using EventDrivenDesign.BuildingBlocks.EventBus;
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
-using EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ;
-using RabbitMQ.Client;
-
 namespace EventDrivenDesign.Rest1
 {
     internal static class RegisterEventBusDependencies

@@ -1,7 +1,3 @@
-using EventDrivenDesign.Rest2.Dtos;
-using EventDrivenDesign.Rest2.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-
 namespace EventDrivenDesign.Rest2.Controllers
 {
     [Route("api/[controller]")]

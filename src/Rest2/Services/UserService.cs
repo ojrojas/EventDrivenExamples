@@ -1,8 +1,3 @@
-using AutoMapper;
-using EventDrivenDesign.Rest2.Dtos;
-using EventDrivenDesign.Rest2.Interfaces;
-using EventDrivenDesign.Rest2.Models;
-
 namespace EventDrivenDesign.Rest2.Services
 {
     public class UserService : IUserService

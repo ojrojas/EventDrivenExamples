@@ -1,8 +1,3 @@
-using EventDrivenDesign.Rest1.Data;
-using EventDrivenDesign.Rest1.Interfaces;
-using EventDrivenDesign.Rest1.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace EventDrivenDesign.Rest1.Respositories
 {
     public class UserRepository : IUserRepository

@@ -14,7 +14,6 @@ services:
     container_name: rest1
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      # - ASPNETCORE_URLS=http://0.0.0.0:80
       - EventBusConnection=rabbitmq
       - EventBusUserName=guest
       - EventBusPassword=guest
@@ -31,7 +30,6 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      # - ASPNETCORE_URLS=http://0.0.0.0:80
       - EventBusConnection=rabbitmq
       - EventBusUserName=guest
       - EventBusPassword=guest

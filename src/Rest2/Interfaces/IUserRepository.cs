@@ -1,5 +1,3 @@
-using EventDrivenDesign.Rest2.Models;
-
 namespace EventDrivenDesign.Rest2.Interfaces
 {
     public interface IUserRepository

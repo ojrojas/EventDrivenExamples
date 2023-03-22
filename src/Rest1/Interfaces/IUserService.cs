@@ -1,5 +1,3 @@
-using EventDrivenDesign.Rest1.Dtos;
-
 namespace EventDrivenDesign.Rest1.Interfaces
 {   
     public interface IUserService

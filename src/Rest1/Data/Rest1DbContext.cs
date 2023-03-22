@@ -1,10 +1,8 @@
-using EventDrivenDesign.Rest1.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace EventDrivenDesign.Rest1.Data
 {
     public class Rest1DbContext : DbContext
     {
+        public Rest1DbContext() { }
         public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,18 +1,3 @@
-using System.Reflection;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.Rest2;
-using EventDrivenDesign.Rest2.Application.IntegrationEvents;
-using EventDrivenDesign.Rest2.Data;
-using EventDrivenDesign.Rest2.Interfaces;
-using EventDrivenDesign.Rest2.Mappers;
-using EventDrivenDesign.Rest2.Queries.Commands;
-using EventDrivenDesign.Rest2.Queries.Handlers;
-using EventDrivenDesign.Rest2.Repositories;
-using EventDrivenDesign.Rest2.Services;
-using MediatR;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -28,6 +13,7 @@ builder.Services.AddAutoMapper(typeof(PostProfile));
 builder.Services.AddMediatR(typeof(CreateUserHandler));
 var Configuration = builder.Configuration;
 builder.Services.RegisterEventBus(Configuration);
+builder.Services.AddDbContext<Rest2DbContext>();
 builder.Services.AddTransient<UserCreatedIntegrationEventHandler>();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -41,11 +27,17 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 builder.Host.ConfigureContainer<ContainerBuilder>(builderOptions => builderOptions.RegisterModule<MediatorModule>());
 
+builder.Services.AddTransient<InitializerDatabaseRest2>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    using var scope = app.Services.CreateScope();
+    var service = scope.ServiceProvider;
+    var initializer = service.GetRequiredService<InitializerDatabaseRest2>();
+    initializer.Run();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -60,7 +52,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
 
 
 public class MediatorModule : Autofac.Module
@@ -78,7 +69,7 @@ public class MediatorModule : Autofac.Module
 
         builder.RegisterAssemblyTypes(typeof(CreateUserCommand).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IRequestHandler<,>));
 
-        builder.Register<ServiceFactory>(context =>
+        builder.Register<MediatR.ServiceFactory>(context =>
        {
            var componentContext = context.Resolve<IComponentContext>();
            return t => { object o; return componentContext.TryResolve(t, out o) ? o : null; };

@@ -1,8 +1,3 @@
-using EventDrivenDesign.Rest2.Interfaces;
-using EventDrivenDesign.Rest2.Models;
-using EventDrivenDesign.Rest2.Queries.Commands;
-using MediatR;
-
 namespace EventDrivenDesign.Rest2.Queries.Handlers
 {
     public class CreateUserHandler : IRequestHandler<CreateUserCommand, bool>

@@ -1,6 +1,3 @@
-
-using EventDrivenDesign.Rest2.Dtos;
-
 namespace EventDrivenDesign.Rest2.Interfaces
 {
     public interface IPostService

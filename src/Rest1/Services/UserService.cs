@@ -1,10 +1,3 @@
-using AutoMapper;
-using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
-using EventDrivenDesign.Rest1.Application.IntegrationEvents;
-using EventDrivenDesign.Rest1.Dtos;
-using EventDrivenDesign.Rest1.Interfaces;
-using EventDrivenDesign.Rest1.Models;
-
 namespace EventDrivenDesign.Rest1.Services
 {
     public class UserService : IUserService

@@ -1,8 +1,3 @@
-using EventDrivenDesign.Rest2.Data;
-using EventDrivenDesign.Rest2.Interfaces;
-using EventDrivenDesign.Rest2.Models;
-using Microsoft.EntityFrameworkCore;
-
 namespace EventDrivenDesign.Rest2.Repositories
 {
     public class PostRepository : IPostRepository

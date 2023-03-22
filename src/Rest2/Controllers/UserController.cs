@@ -1,7 +1,3 @@
-using EventDrivenDesign.Rest2.Dtos;
-using EventDrivenDesign.Rest2.Interfaces;
-using Microsoft.AspNetCore.Mvc;
-
 namespace EventDrivenDesign.Rest2.Controllers
 {
     [Route("api/[controller]")]
@@ -21,6 +17,4 @@ namespace EventDrivenDesign.Rest2.Controllers
             return Ok(await _userService.ListUser(cancellationToken));
         }
     }
-
-
 }

@@ -1,9 +1,3 @@
-using System.Text.Json;
-using AutoMapper;
-using EventDrivenDesign.Rest2.Dtos;
-using EventDrivenDesign.Rest2.Interfaces;
-using EventDrivenDesign.Rest2.Models;
-
 namespace EventDrivenDesign.Rest2.Services
 {
     public class PostService : IPostService
@@ -51,7 +45,7 @@ namespace EventDrivenDesign.Rest2.Services
         {
             _logger.LogWarning("Mapping post to concrete post");
             var post = _mapper.Map<Post>(postDto);
-            _logger.LogInformation($"Updating post to request new parameters {JsonSerializer.Serialize(post)}");
+            _logger.LogInformation($"Updating post to request new parameters {System.Text.Json.JsonSerializer.Serialize(post)}");
             return _mapper.Map<PostDto>(await _postRepository.UpdatePost(Id, post, cancellationToken));
         }
     }

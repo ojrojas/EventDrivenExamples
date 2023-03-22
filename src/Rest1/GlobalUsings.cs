@@ -1,0 +1,21 @@
+﻿global using Autofac;
+global using Autofac.Extensions.DependencyInjection;
+global using AutoMapper;
+global using EventDrivenDesign.BuildingBlocks.EventBus;
+global using EventDrivenDesign.BuildingBlocks.EventBus.Abstractions;
+global using EventDrivenDesign.BuildingBlocks.EventBus.Events;
+global using EventDrivenDesign.BuildingBlocks.EventBus.Interfaces;
+global using EventDrivenDesign.BuildingBlocks.EventBusRabbitMQ;
+global using EventDrivenDesign.Rest1;
+global using EventDrivenDesign.Rest1.Application.IntegrationEvents;
+global using EventDrivenDesign.Rest1.Data;
+global using EventDrivenDesign.Rest1.Dtos;
+global using EventDrivenDesign.Rest1.Interfaces;
+global using EventDrivenDesign.Rest1.Mappers;
+global using EventDrivenDesign.Rest1.Models;
+global using EventDrivenDesign.Rest1.Respositories;
+global using EventDrivenDesign.Rest1.Services;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using RabbitMQ.Client;
+
